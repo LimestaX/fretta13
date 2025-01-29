@@ -279,13 +279,19 @@ end
 function GM:GetWinningWant()
 
 	local Votes = {}
-	
+	local isScoreBased = ConVar:GetInt( "fretta_score_voting" ) > 0
+	local maxScore = ConVar:GetInt( "fretta_score_votemax" )
 	for k, ply in pairs( player.GetAll() ) do
 	
 		local want = ply:GetNWString( "Wants", nil )
+		local score = ply:Frags()
 		if ( want && want != "" ) then
 			Votes[ want ] = Votes[ want ] or 0
-			Votes[ want ] = Votes[ want ] + 1			
+			if ( isScoreBased ) then 
+				Votes[ want ] = Votes[ want ] + math.min( maxScore, score )
+			else
+				Votes[ want ] = Votes[ want ] + 1
+			end
 		end
 		
 	end
