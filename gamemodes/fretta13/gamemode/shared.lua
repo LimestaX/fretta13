@@ -11,6 +11,8 @@ include( "class_default.lua" )
 include( "player_colours.lua" )
 
 fretta_voting = CreateConVar( "fretta_voting", "1", { FCVAR_REPLICATED, FCVAR_NOTIFY, FCVAR_ARCHIVE }, "Allow/Dissallow voting" )
+fretta_score_voting = CreateConVar( "fretta_score_voting", "1", { FCVAR_REPLICATED, FCVAR_NOTIFY, FCVAR_ARCHIVE }, "Score based voting or Tally Based" )
+fretta_score_votemax = CreateConVar( "fretta_score_votemax", "9000", { FCVAR_REPLICATED, FCVAR_NOTIFY, FCVAR_ARCHIVE }, "Max score considered" )
 
 GM.Name 	= "Simple Game Base"
 GM.Author 	= "Anonymous"
